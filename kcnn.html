@@ -1,0 +1,490 @@
+<!doctype html>
+<html>
+    <head>
+	    <title>K-CNN ToolKit</title>
+	    <link rel='icon' type='image/ico' href='media/logo.jpg'>
+	    <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="styles/bootstrap4.5.0.min.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="styles/bootstrap4.3.1.min.css"> -->
+  		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  		<!-- <link rel="stylesheet" href="styles/all.css"> -->
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  		<!-- <link rel="stylesheet" href="styles/font-awesome.min.css"> -->
+  		<!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
+  		<link rel="stylesheet" href="styles/sweetalert2.min.css">
+  		<link rel="stylesheet" href="styles/jquery.loadingModal.css">
+
+  		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="styles/select2.min.css" />
+		
+  	</head>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			  <a class="navbar-brand" href="#">
+			    <img src="media/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+			    K-CNN ToolKit
+			  </a>
+			  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Dataset</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Train</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Evaluate</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Predict</a>
+			      </li>
+			    </ul>
+			    <form class="form-inline my-2 my-lg-0">
+			      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			    </form>
+			  </div> -->
+			</nav>
+		</header>
+
+		<div class="dataset_container">
+			<button id="btn-new-dataset" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload a new dataset by providing the directories with the different classes your dataset belongs to">
+				<i class="fas fa-plus"></i> New dataset
+			</button>
+			<button id="btn-show-dataset" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Show existing datasets">
+				<i class="fa fa-eye" style="font-size: 20px"></i> Show dataset
+			</button>
+			<button id="btn-training" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Train the dataset">
+				<i class="fa fa-cubes" style="font-size: 20px"></i> Training
+			</button>
+			<button id="btn-evaluation" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Evaluate models">
+				<i class="fa fa-line-chart" style="font-size: 20px"></i> Evaluation
+			</button>
+			<button id="btn-prediction" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Data classification">
+				<i class="fa fa-wpexplorer" style="font-size: 20px"></i> Prediction
+			</button>
+		</div>
+
+		<div id="card-dataset" class="card">
+		  	<div class="card-body">
+			  	<div id="dataset-name-input" class="input-group-prepend">
+			    	<span class="input-group-text" id="basic-addon1">Dataset name:</span>
+			    	<input type="text" id="form-control-dataset-name" class="form-control" aria-describedby="basic-addon1" required">
+			  	</div>
+			  	<div class="new-class">
+			  		<button id="btn-new-class" type="button" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Create a new class by providing some dataset from your file system">
+						<i class="fas fa-plus"></i> Add class
+					</button>
+					<button id="btn-remove-classes" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Remove all classes">
+						<i class="fas fa-trash"></i> Remove all
+					</button>
+			  	</div>
+			    <button id="btn-create" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Upload a dataset that includes all the above classes"><i class="fa fa-cloud-upload"></i> Upload</button>
+			</div>
+		</div>
+
+		<div id="card-show-dataset" class="card">
+		  	<div class="card-body">
+		  		<button id="btn-refresh" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="Reload datasets"><i class="fa fa-refresh"></i> Refresh</button>
+		  		<button id="btn-remove-dataset" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Remove all selected folders and files"><i class="fas fa-trash"></i> Remove</button>
+		  		<span class="label label-default">Training dataset:</span>
+				<select id="search-dataset" onchange="datasetChanged(this)" data-toggle="tooltip" data-placement="right" title="Select a dataset to use in the training session">
+				</select>
+				<div class="custom-control custom-checkbox" id="heatmaps-div" style="margin-bottom: 10px;">
+				    <input type="checkbox" class="custom-control-input" id="heatmaps">
+				    <label class="custom-control-label" for="heatmaps" style="color: white;">Heatmaps</label>
+				</div>
+		  		<div class="my-files-path"></div>
+			</div>
+		</div>
+
+		<div id="card-training" class="card">
+		  	<div class="card-body">
+				<div class="row" style="padding: 0;">
+					<div class="col-md-auto">
+						<span class="label label-default">Model:</span>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -10px; margin-left: -5px;">
+				    	<div class="model-class"><select id="search-model" onchange="modelChanged(this)" data-toggle="tooltip" data-placement="right" title="Select a model">
+				  			<option value="">Select model </option>
+				  			<option value="0">Build my own model</option>
+				  			<option value="1">AllCNN</option>
+				  			<option value="2">InceptionV3</option>
+				  			<option value="3">LeNet</option>
+				  			<option value="4">MobileNet</option>
+				  			<option value="5">SqueezeNet</option>
+				  			<option value="6">VGG16</option>
+						</select></div>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -20px; margin-left: 5px;">
+				    	<button id="btn-info-model" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Model architecture"><i class="fas fa-info-circle"></i></button>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -10px; margin-left: 5px;">
+				    	<button id="btn-remove-model" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Remove selected model"><i class="fas fa-trash"></i> Remove model</button>
+				    </div>
+				</div>
+				<div class="row" style="padding: 0; margin-top: 20px;">
+				    <div class="col-md-auto" style="margin-left: -10px;">
+				    	<span class="label label-default">Optimizer:</span>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -10px; margin-left: -5px;">
+				    	<div class="model-class"><select id="search-optimizer" data-toggle="tooltip" data-placement="right" title="Select an optimizer" style="float: left;">
+				  			<option value="">Select optimizer </option>
+				  			<option value="1">Adadelta</option>
+				  			<option value="2">Adagrad</option>
+				  			<option value="3">Adam</option>
+				  			<option value="4">Adamax</option>
+				  			<option value="5">FTRL</option>
+				  			<option value="6">NAdam</option>
+				  			<option value="7">RMSprop</option>
+				  			<option value="8">SGD</option>
+						</select></div>
+				    </div>
+				</div>
+
+				<div class="row" style="padding: 0;">
+					<div class="col-md-auto" style="margin-top: 10px;">
+				    	<span class="label label-default">Monitoring parameter:</span>
+				    </div>
+				    <div class="col-md-auto" style="margin-left: -5px;">
+				    	<div class="model-class"><select id="search-monitor" data-toggle="tooltip" data-placement="right" title="Select a model" style="float: left;">
+				  			<option value="">Select a monitoring parameter </option>
+				  			<option value="1">Training accuracy</option>
+				  			<option value="2">Training loss</option>
+				  			<option value="3">Validation accuracy</option>
+				  			<option value="4">Validation loss</option>
+						</select></div>
+				    </div>
+				</div>
+
+				<div class="custom-control custom-checkbox">
+				    <input type="checkbox" class="custom-control-input" id="save-best">
+				    <label class="custom-control-label" for="save-best" style="color: white;">Save best model</label>
+				</div>
+
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="transf">
+				    <label class="custom-control-label" for="transf" style="color: white;">Transformations during training</label>
+				</div>
+
+				<div class="row" style="padding: 0;">
+					<div class="col-md-auto" style="margin-top: 10px;">
+						<span class="label label-default" style="padding-left: 11px;">Minimum learning rate:</span>
+				    </div>
+				    <div style="margin-left: -15px; width: 290px;">
+				    	<input class="spinbox" id="lr" type="number" value="0.0001" data-decimals="4" min="0.0001" max="10" step="0.0001"/>
+				    </div>
+				</div>
+				<div class="row" style="padding: 0;">
+				    <div class="col-md-auto" style="margin-top: 10px;">
+						<span class="label label-default" style="padding-left: 122px;">Epochs:</span>
+				    </div>
+				    <div style="margin-left: -15px; width: 290px;">
+				    	<input class="spinbox" id="epochs" type="number" value="1" min="1" max="10000" step="1"/>
+				    </div>
+				</div>
+				<div class="row" style="padding: 0;">
+				    <div class="col-md-auto" style="margin-top: 10px;">
+						<span class="label label-default" style="padding-left: 102px;">Batch size:</span>
+				    </div>
+				    <div style="margin-left: -14px; width: 290px;">
+				    	<input class="spinbox-percentage" id="batch" data-suffix="%" type="number" value="0" data-decimals="2" min="0" max="100" step="0.01"/>
+				    </div>
+				</div>
+				<div class="row" style="padding: 0;">
+				    <div class="col-md-auto" style="margin-top: 10px;">
+						<span class="label label-default" style="padding-left: 15px;">Validation dataset size:</span>
+				    </div>
+				    <div style="margin-left: -14px; width: 291px;">
+				    	<input class="spinbox-percentage" id="validation" data-suffix="%" type="number" value="0" data-decimals="2" min="0" max="100" step="0.01"/>
+				    </div>
+				</div>
+			</div>
+
+			<div class="new-layer" style="margin-top: 10px;">
+				<div class="input-group" style="margin-top: -10px;width: 450px;margin-bottom: 20px;">
+				    <span class="input-group-text" id="my-model-name">Model name:</span>
+		    		<input type="text" id="form-control-my-model-name" class="form-control" aria-describedby="my-model-name" required style="border-radius: 3px;">
+			  	</div>
+
+				<span class="label label-default">Layer:</span>
+
+				<select id="search-layer" data-toggle="tooltip" data-placement="right" title="Select a layer type">
+		  			<option value="">Select a layer type </option>
+		  			<option value="1">Activation</option>
+		  			<option value="2">BatchNormalization</option>
+		  			<option value="3">Conv2D</option>
+		  			<option value="4">Dense</option>
+		  			<option value="5">Dropout</option>
+		  			<option value="6">Fire function</option>
+		  			<option value="7">Flatten</option>
+		  			<option value="8">GlobalAveragePooling2D</option>
+		  			<option value="9">MaxPool2D</option>
+				</select>
+
+				<button id="btn-new-layer" type="button" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Create a new layer for the training model" style="margin-top: -10px; margin-left: 15px;">
+				<i class="fas fa-plus"></i> Add layer
+				</button>
+
+		    	<button id="btn-remove-layers" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Remove all layers" style="margin-top: -10px; margin-right: 13px;">
+				<i class="fas fa-trash"></i> Remove all
+				</button>
+
+				<button id="btn-upload-model" type="button" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Save model" style="margin-top: -10px;">
+				<i class="fas fa-floppy-o"></i> Save model
+				</button>
+			</div>
+
+			<div class="row" style="padding-left: 20px; padding-top: 10px; margin-top: 0;">
+				<div class="col-md-auto">
+			    	<button id="btn-clear" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Clear console"><i class="fa fa-eraser"></i> Clear console</button>
+			    </div>
+				<div class="col-md-auto">
+			    	<button id="btn-train" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Start training"><i class="fa fa-play-circle"></i> Train</button>
+			    </div>
+			    <div class="col-md-auto">
+			    	<button id="btn-stop" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Stop training"><i class="fa fa-stop-circle"></i> Stop</button>
+					</button>
+			    </div>
+			</div>
+
+	    	<div class="form-group shadow-textarea" style="margin-left: 20px; margin-right: 20px;">
+				<textarea class="form-control z-depth-1" id="console" rows="20" placeholder="> Console output" readonly style="background-color: rgb(52, 58, 64);"></textarea>
+			</div>
+		</div>
+
+		<div id="card-evaluation" class="card">
+		  	<div class="card-body">
+		  		<div class="row" style="padding: 0;">
+					<div class="col-md-auto">
+						<span class="label label-default">Trained model directory:</span>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -20px; margin-left: -5px;">
+				    	<div class="model-class"><select id="search-model-dir" onchange="modelDirChanged(this)" data-toggle="tooltip" data-placement="right" title="Select a trained model directory to check behavior" multiple="multiple">
+				  			<!-- <option value="">Select directory for evaluation </option> -->
+						</select></div>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -10px; margin-left: 5px; margin-bottom: 10px;">
+				    	<button id="btn-remove-model-dir" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Remove selected trained model directories"><i class="fas fa-trash"></i> Remove selection</button>
+				    </div>
+				</div>
+
+				<div class="row" id="model-weight" style="padding: 0;">
+					<div class="col-md-auto">
+						<span class="label label-default">Trained model (.kras):</span>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -10px; margin-left: -5px;">
+				    	<div class="model-class"><select id="search-model-weight" onchange="modelWeightChanged(this)" data-toggle="tooltip" data-placement="right" title="Select a trained model for evaluation">
+				  			<option value="">Select trained model for evaluation </option>
+						</select></div>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -10px; margin-left: 5px;">
+				    	<button id="btn-remove-model-weight" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Remove selected trained model"><i class="fas fa-trash"></i> Remove model</button>
+				    </div>
+				</div>
+
+				<div class="col-md-auto" style="margin-top: -10px; margin-left: 0px;">
+			    	<button id="btn-graphs" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Show accuracy and loss graphs" style="margin-right: 10px;"><i class="fas fa-line-chart"></i> Acc/Loss graphs</button>
+			    	<button id="btn-graphs-clear" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Clear graphs" style="margin-left: 0px;"><i class="fa fa-eraser"></i> Clear</button>
+			    </div>
+
+			    <div id="chars">
+				</div>
+
+			    <div class="col-md-auto" style="margin-top: 0px; margin-left: 0px;">
+			    	<button id="btn-matrix" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Show confusion matrix" style="margin-right: 10px;"><i class="fas fa-th"></i> Confusion matrix</button>
+			    	<button id="btn-matrix-clear" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Clear confusion matrix" style="margin-left: 0px;"><i class="fa fa-eraser"></i> Clear</button>
+			    </div>
+
+			    <div id="matrix">
+				</div>
+
+				<!-- <div class="col-md-auto" style="margin-top: 0px; margin-left: 0px;">
+			    	<button id="btn-roc" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Show ROC curve" style="margin-right: 10px;"><i class="fa fa-area-chart"></i> ROC curve</button>
+			    	<button id="btn-roc-clear" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Clear ROC curve" style="margin-left: 0px;"><i class="fa fa-eraser"></i> Clear</button>
+			    </div> -->
+
+			    <div id="roc">
+				</div>
+
+			    <div class="col-md-auto" style="margin-top: 0px; margin-left: 0px;">
+			    	<button id="btn-metrics" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Show metrics" style="margin-right: 10px;"><i class="fas fa-file-text"></i> Metrics</button>
+			    	<button id="btn-metrics-clear" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Clear metrics" style="margin-left: 0px;"><i class="fa fa-eraser"></i> Clear</button>
+			    </div>
+
+			    <div id="metrics" style="margin-top: 10px;">
+				</div>
+
+			</div>
+		</div>
+
+		<div id="card-prediction" class="card">
+		  	<div class="card-body">
+		  		<div class="row" style="padding: 0;">
+					<div class="col-md-auto">
+						<span class="label label-default">Trained model directory:</span>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: -10px; margin-left: -5px;">
+				    	<div class="model-class"><select id="search-model-dir-pred" onchange="modelDirChangedPred(this)" data-toggle="tooltip" data-placement="right" title="Select a trained model directory for prediction">
+				  			<option value="">Select directory for prediction </option>
+						</select></div>
+				    </div>
+				</div>
+
+				<div class="row" id="model-weight-pred" style="padding: 0;">
+					<div class="col-md-auto" style="margin-top: 10px;">
+						<span class="label label-default">Trained model (.kras):</span>
+				    </div>
+				    <div class="col-md-auto" style="margin-top: 0px; margin-left: -5px;">
+				    	<div class="model-class"><select id="search-model-weight-pred" onchange="modelWeightChangedPred(this)" data-toggle="tooltip" data-placement="right" title="Select a trained model for prediction">
+				  			<option value="">Select trained model for prediction </option>
+						</select></div>
+				    </div>
+				</div>
+
+				<div class="row" id="num-classes" style="padding: 0;">
+					<div class="col-md-auto" style="margin-top: 10px;">
+						<span class="label label-default" style="padding-left: 11px;">Number of classes:</span>
+				    </div>
+				    <div style="margin-left: -15px; width: 290px;">
+				    	<input class="spinbox" id="n-classes" type="number" value="1" min="1" max="100" step="1"/>
+				    </div>
+				</div>
+
+				<div>
+					<button id="btn-pred" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Predict which class belongs the selected files"><i class="fa fa-gavel"></i> Predict</button>
+					<button id="btn-logs" class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Download the logs associated with the last prediction"><i class="fa fa-cloud-download"></i> Download logs</button>
+				</div>
+
+		  		<button id="btn-refresh-pred" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="Reload data for prediction"><i class="fa fa-refresh"></i> Refresh</button>
+		  		<button id="btn-remove-dataset-pred" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Remove all selected folders and files"><i class="fas fa-trash"></i> Remove</button>
+		  		<button id="btn-upload-pred" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Upload a folder with files for prediction"><i class="fa fa-cloud-upload"></i> Upload data</button>
+		  		<div class="my-files-path-pred"></div>
+			</div>
+		</div>
+
+		<!-- The Modal Images -->
+		<div id="myModal" class="modal">
+		  	<span class="close">&times;</span>
+		  	<span id="next" class="next"><i class="fa fa-chevron-right"></i></span>
+		  	<span id="previous" class="previous"><i class="fa fa-chevron-left"></i></span>
+		  	<div class="caption-for-modal" id="caption"></div>
+		  	<div class="imgDCM-content" id="imgDCM"></div>
+		  	<div class="caption-for-modal" id="caption1"></div>
+		  	<img class="modal-content" id="img01" style="margin-bottom: 20px;">
+		  	<div class="caption-for-modal" id="caption2"></div>
+		  	<img class="modal-content" id="img02" style="margin-bottom: 20px;">
+		  	<div class="caption-for-modal" id="caption3"></div>
+		  	<img class="modal-content" id="img03" style="margin-bottom: 20px;">
+		  	<div class="caption-for-modal" id="caption4"></div>
+		  	<img class="modal-content" id="img04" style="margin-bottom: 20px;">
+		  	<div class="caption-for-modal" id="caption5"></div>
+		  	<img class="modal-content" id="img05">
+		</div>
+
+		<!-- The Modal Loading -->
+		<div id="myModalLoading" class="modal">
+			<div class="spinner-border text-light" role="status">
+			    <span class="sr-only">Loading...</span>
+			</div>
+		</div>
+
+		<!--<div style="position:relative;"><div id="dicomImage"style="width:25px;height:25px;top:0px;left:0px; position:absolute"></div></div>-->
+
+		<script src="scripts/jquery-3.3.1.js"></script>
+		<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>-->
+		<script src="scripts/sweetalert2.all.min.js"></script>
+		<script src="scripts/jquery.js"></script>
+		<script src="scripts/bootstrap-treeview.js"></script>
+
+		<script src="scripts/myscript0.js"></script>
+
+		<!-- include the cornerstone library -->
+		<script src="scripts/cornerstone.min.js"></script>
+
+		<!-- include the dicomParser library as the WADO image loader depends on it -->
+		<script src="scripts/dicomParser.min.js"></script>
+
+		<!-- Lines ONLY required for this example to run without building the project -->
+		<script>window.cornerstoneWADOImageLoader || document.write('<script src="https://unpkg.com/cornerstone-wado-image-loader">\x3C/script>')</script>
+
+		<!-- include the data dictionary -->
+		<script src="scripts/dataDictionary.js"></script>
+
+		<script src="scripts/myscript1.js"></script>
+		<script src="scripts/myscript2.js"></script>
+		<script src="scripts/myscript3.js"></script>
+		<script src="scripts/myscript4.js"></script>
+		<script src="scripts/myscript5.js"></script>
+
+		<script src="scripts/select2.min.js"></script>
+		<script>
+			$("#search-dataset").select2( {
+			 placeholder: "Select training dataset ",
+			 allowClear: true
+			 });
+
+			$("#search-model").select2( {
+			 placeholder: "Select model ",
+			 allowClear: true
+			 });
+
+			$("#search-optimizer").select2( {
+			 placeholder: "Select optimizer ",
+			 allowClear: true
+			 });
+			
+			$("#search-monitor").select2( {
+			 placeholder: "Select one monitoring parameter ",
+			 allowClear: true
+			 });
+
+			$("#search-layer").select2( {
+			 placeholder: "Select a layer type ",
+			 allowClear: true
+			 });
+
+			$("#search-model-dir").select2( {
+			 placeholder: "Select directory for evaluation ",
+			 allowClear: true
+			 });
+
+			$("#search-model-weight").select2( {
+			 placeholder: "Select trained model for evaluation ",
+			 allowClear: true
+			 })
+
+			$("#search-model-dir-pred").select2( {
+			 placeholder: "Select directory for prediction ",
+			 allowClear: true
+			 });
+
+			$("#search-model-weight-pred").select2( {
+			 placeholder: "Select trained model for prediction ",
+			 allowClear: true
+			 })
+		</script>
+
+		<script src="scripts/bootstrap-input-spinner.js"></script>
+		<script>
+		    $("input[type='number']").inputSpinner()
+		</script>
+		
+		<!-- <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script> -->
+		<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
+
+		<script src="scripts/jquery.loadingModal.js"></script>
+	</body>
+</html>
+<ul>

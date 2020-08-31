@@ -1,0 +1,13 @@
+Model: LeNet
+Weights: 2020-08-19 12-12-28 LeNet/ epoch(07)-acc(1.00)-val_acc(0.64)-loss(0.03)-val_loss(0.65).kras
+Optimizer: Adam
+
+prediction/MyDatasetForPrediction/image_00000 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 2
+prediction/MyDatasetForPrediction/image_00001 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 2
+prediction/MyDatasetForPrediction/image_00002 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 2
+prediction/MyDatasetForPrediction/image_00003 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 0
+prediction/MyDatasetForPrediction/image_00006 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 0
+prediction/MyDatasetForPrediction/image_00015 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 1
+prediction/MyDatasetForPrediction/image_00017 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 1
+prediction/MyDatasetForPrediction/image_00018 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 1
+prediction/MyDatasetForPrediction/image_00028 256_204_3_5_0.2_0.2_0.1.png => Predicted class: 0

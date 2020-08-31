@@ -1,0 +1,486 @@
+h1 {
+	text-align: center;
+}
+
+header {
+	background: #DDD;
+}
+
+body {
+  background-color: rgb(52, 58, 64);
+}
+
+.container {
+
+}
+
+.row {
+	margin: 10px;
+	padding: 10px 100px;
+}
+
+.col-xs-1 {
+	margin-left: 50px;
+	margin-right: 1px;	
+}
+
+.btn-secondary:not(#btn-new-dataset,#btn-show-dataset) {
+	margin-top: 10px;
+}
+
+.btn-secondary {
+	border-width: 2px;
+}
+
+.btn-primary {
+	margin-top: 10px;
+}
+
+.btn-dark {
+	margin-top: 10px;
+}
+
+#btn-new-layer {
+  margin-top: 0px;
+  margin-right: 15px;
+}
+
+.btn-danger:not(#btn-remove-classes,#btn-remove-dataset,#sa-cancel,#btn-remove-layers) {
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.btn-success {
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#btn-remove-dataset {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+#btn-remove-classes {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#sa-cancel {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.input-group-prepend:not(#dataset-name-input) {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.card {
+	margin-top: 5px;
+	background-color: rgb(108, 117, 125);
+}
+
+.card {
+	border-width: 2px;
+}
+
+.input-group {
+}
+
+.input-group-append {
+	margin-right: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+	background-color: rgb(233, 236, 239);
+	margin-top: 8px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.custom-file-upload:hover {
+	background: #383;
+}
+
+.progress {
+	height: 5px;
+}
+
+.my-files-path {
+	border-radius: 5px;
+	background-color: rgb(255, 255, 255);
+}
+
+.my-files-path-pred {
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.tree-dataset {
+	margin-left: 0px;
+}
+
+.tree-subdataset {
+	margin-left: 20px;
+	display: none;
+}
+
+.tree-dataset-pred {
+  margin-left: 0px;
+}
+
+.tree-file-pred {
+  margin-left: 20px;
+  display: none;
+}
+
+.tree-file {
+	margin-left: 44px;
+	display: none;
+}
+
+.dataset-tree {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+  margin-left: 15px;
+}
+
+.pred-dataset-tree {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-left: 15px;
+}
+
+.plusminus {
+	margin-left: 5px;
+}
+
+.check-all {
+	#'foo'offsetWidth
+}
+
+.fa-eye-file {
+	margin-left: 8px;
+}
+
+.fa-eye-file-dcm {
+  margin-left: 8px;
+  margin-right: 4px;
+}
+
+.fa-info-file-dcm {
+  margin-left: 4px;
+  margin-right: 34px;
+}
+
+.fa-info-file-other {
+  margin-left: 8px;
+  margin-right: 3px;
+}
+
+#btn-remove-dataset {
+	display: none;
+  margin-right: 10px;
+}
+
+#btn-remove-dataset-pred {
+  display: none;
+  margin-top: -10px;
+  margin-right: 10px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.imgDCM-content {
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  max-width: 700px;
+  max-height: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  //height: 150px;
+}
+
+.caption-for-modal {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  //height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.next {
+  position: absolute;
+  top: 20px;
+  right: 40%;
+  color: rgb(123,123,123);
+  font-size: 25px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.next:hover,
+.next:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.previous {
+  position: absolute;
+  top: 20px;
+  left: 40%;
+  color: rgb(123,123,123);
+  font-size: 25px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.previous:hover,
+.previous:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.spinner-border {
+	height: 15px;
+	width: 15px;
+	display: none;
+}
+
+.form-check-input {
+	margin-left: 0px;
+}
+
+.myalertmul {
+	text-align: right;
+	margin-bottom: 5px;
+	margin-right: 25%;
+}
+
+.input-mul {
+	height: 30px;
+	width: 20%;
+}
+
+#dataset_name {
+	margin-left: 5px;
+	font-weight: bold; 
+}
+
+#new-dataset-name-input {
+	margin-bottom: 5px;
+}
+
+#new-custom-file-label {
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+.file_metadata {
+  font-size: 11px;
+  text-align: left;
+}
+
+.file_metadata1 {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.file_metadata2 {
+  text-align: left;
+}
+
+.form-control {
+  float: right;
+}
+
+.model-class {
+  margin-top: 10px;
+}
+
+.spinbox {
+  min-width: 50px;
+  max-width: 300px;
+}
+
+.spinbox-percentage {
+  min-width: 50px;
+  max-width: 262px;
+}
+
+.btn-decrement {
+  height: 38px;
+  margin-top: -10px;
+  padding: 0;
+}
+
+.btn-increment {
+  height: 38px;
+  margin-top: 0px;
+  padding: 0;
+}
+
+.col-md-auto {
+  padding: 0;
+  margin-left: -10px;
+  margin-right: 10px;
+}
+
+.labels {
+  margin-top: 10px;
+}
+
+#btn-train {
+  margin-top: 0px;
+  margin-right: 15px;
+}
+
+#btn-clear {
+  margin-top: 0px;
+  margin-right: 15px;
+}
+
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+    color: white;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+
+#console {
+  margin-left: 100px;
+  color: white;
+}
+
+.z-depth-1 {
+  background-color: rgb(52, 58, 64);
+}
+
+.new-layer {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.label-default {
+  border-radius: 3px;
+  background-color: rgb(233, 236, 239);
+  color: rgb(73, 80, 87);
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  margin-right: -5px;
+  position: relative;
+  top: -4px;
+}
+
+.model-info {
+  text-align: left;
+}
+
+.canvasjs-chart-canvas {
+  border: 1px solid white;
+}
+
+#btn-upload-pred {
+  margin-top: -10px;
+}
+
+#btn-pred {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+#btn-logs {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}

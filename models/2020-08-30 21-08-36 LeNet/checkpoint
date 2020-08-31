@@ -1,0 +1,2 @@
+model_checkpoint_path: " epoch(101)-acc(0.99)-loss(0.01).kras"
+all_model_checkpoint_paths: " epoch(101)-acc(0.99)-loss(0.01).kras"
